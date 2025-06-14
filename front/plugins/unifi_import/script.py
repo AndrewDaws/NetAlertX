@@ -12,7 +12,7 @@ import sys
 import requests
 from requests import Request, Session, packages
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
-from pyunifi.controller import Controller
+from nax_pyunifi.controller import Controller
 
 
 # Register NetAlertX directories
@@ -96,7 +96,14 @@ def get_entries(plugin_objects: Plugin_Objects) -> Plugin_Objects:
     
         mylog('verbose', [f'[{pluginName}] site: {site}'])
 
-        c = Controller(UNIFI_HOST, UNIFI_USERNAME, UNIFI_PASSWORD, port=PORT, version=VERSION, ssl_verify=VERIFYSSL, site_id=site)
+        c = Controller(
+            UNIFI_HOST, 
+            UNIFI_USERNAME, 
+            UNIFI_PASSWORD, 
+            port=PORT, 
+            version=VERSION, 
+            ssl_verify=VERIFYSSL, 
+            site_id=site)
         
         online_macs = set()
         processed_macs = []
